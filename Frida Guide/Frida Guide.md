@@ -34,8 +34,7 @@ in order to explain how hooks write i use apk application written for this purpo
 ### application code
 below you can find decompile apk open using jd-gui   extracted after reverse engineering application. 
 
-![[Pasted image 20210909195702.png]]
-
+![alt text](https://github.com/cyberheartmi9/Frida-Guide/blob/main/Frida%20Guide/screenshots/Pasted%20image%2020210909195702.png)
 
 in order to write hook you must understand what you will be need for this we explain it by number in above image.
 
@@ -171,7 +170,7 @@ var boolean= Java.use("com.blog.testfrida.examples.BasicTypes");
 ```
 
 
-![[Pasted image 20210909201935.png]]
+![alt text](https://github.com/cyberheartmi9/Frida-Guide/blob/main/Frida%20Guide/screenshots/Pasted%20image%2020210909201935.png)
 
 in above image output for this hook but you can notice  in 3 output came different from console that is came from value passed to function in handler when press button test boolean, next we will learn how to write hook to intercept parameter value that passed to function and edit function in runtime without reverse application.
 
@@ -769,7 +768,7 @@ type.multiply.overload('[Lcom.blog.testfrida.complexobjects.Person;','com.blog.t
 });
 
 ```
-[Lcom.blog.testfrida.complexobjects.Person; --> array of person class
+[Lcom.blog.testfrida.complexobjects.Person; --> array of person class<br>
 com.blog.testfrida.complexobjects.Person --> person class.
 
 

@@ -773,3 +773,97 @@ com.blog.testfrida.complexobjects.Person --> person class.
 
 
 
+
+
+## This keyword
+this is reference variable that refers to current object, by using this keyword we are calling original method without any edit in method in runtime this could help in follow:
+
+1- print value that passed to method.
+2- print stack trace to know where method been called.
+
+
+```java
+
+  
+ public static long addTwoLongs(long paramLong1, long paramLong2) {  
+ return paramLong1 + paramLong2;  
+ }
+```
+
+in above code  addTwoLongs function return long data type so in hook we must return same value by using this keyword.
+
+
+write hook without return value we notice error 
+
+```js
+
+
+Java.perform(function () { 
+
+
+var type=Java.use("com.blog.testfrida.examples.BasicTypes");
+
+type.addTwoLongs.implementation=function(x,y){
+console.log("\ninside addTwoLongs ");
+console.log("value ( "+x+","+y+" )");
+
+
+}
+
+
+});
+
+
+```
+
+```bash
+Error: Implementation for addTwoLongs expected return value compatible with long
+    at ne (frida/node_modules/frida-java-bridge/lib/class-factory.js:614)
+    at <anonymous> (frida/node_modules/frida-java-bridge/lib/class-factory.js:592)
+
+```
+
+return value must be long so we call addTwoLongs by using this and pass same value passed in implementation.
+
+
+```js
+
+Java.perform(function () { 
+
+
+var type=Java.use("com.blog.testfrida.examples.BasicTypes");
+
+type.addTwoLongs.implementation=function(x,y){
+console.log("\ninside addTwoLongs ");
+console.log("value ( "+x+","+y+" )");
+return this.addTwoLongs(x,y);
+
+
+}
+
+
+});
+
+
+```
+
+### output
+```bash
+    ____
+    / _  |   Frida 15.0.13 - A world-class dynamic instrumentation toolkit
+   | (_| |
+    > _  |   Commands:
+   /_/ |_|       help      -> Displays the help system
+   . . . .       object?   -> Display information about 'object'
+   . . . .       exit/quit -> Exit
+   . . . .
+   . . . .   More info at https://frida.re/docs/home/
+
+[Google::PID::1796]->
+inside addTwoLongs
+value ( 10,10 )
+
+
+```
+
+

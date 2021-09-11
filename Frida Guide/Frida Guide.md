@@ -642,11 +642,11 @@ console.log("getAge [ "+obj.getAge()+" ] ");
 });
 ```
 
-1- create wrapper type for Person class
-2- create instance from this wrapper by use [  var obj=type.$new();  ]
-3- call method by using this instance [  obj.setId(1337);  ]
-4- create wrapper for String as we explain how to pass string in frida , in order to pass string to getName.
-5- call [ getId , getName ,  getAge  ]
+1- create wrapper type for Person class <br>
+2- create instance from this wrapper by use [  var obj=type.$new();  ] <br>
+3- call method by using this instance [  obj.setId(1337);  ] <br>
+4- create wrapper for String as we explain how to pass string in frida , in order to pass string to getName. <br>
+5- call [ getId , getName ,  getAge  ] <br>
 
 
 

@@ -1,0 +1,17 @@
+Java.perform(function () {
+  var Cipher = Java.use('javax.crypto.Cipher');
+  var Arrays = Java.use('java.util.Arrays');
+
+  Cipher.init.overload('int', 'java.security.Key', 'java.security.spec.AlgorithmParameterSpec').implementation = function (opmode, key, params) {
+    console.log('AES encryption key: ' + Arrays.toString(key.getEncoded()));
+    console.log('AES encryption mode: ' + this.getMode());
+    this.init(opmode, key, params);
+  };
+
+  Cipher.doFinal.overload('[B').implementation = function (data) {
+    console.log('AES encryption input: ' + Arrays.toString(data));
+    var result = this.doFinal(data);
+    console.log('AES encryption output: ' + Arrays.toString(result));
+    return result;
+  };
+});

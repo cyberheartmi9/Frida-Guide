@@ -1,8 +1,0 @@
-var Crypto = Java.use("javax.crypto.Cipher");
-
-Crypto.doFinal.overload("[B").implementation = function (v) {
-    console.log("AES/CBC/PKCS7Padding called with plaintext: " + new Uint8Array(v));
-    var result = this.doFinal(v);
-    console.log("AES/CBC/PKCS7Padding output: " + new Uint8Array(result));
-    return result;
-};
